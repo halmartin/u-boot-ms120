@@ -5,3 +5,7 @@ Meraki provide the source code for u-boot for the MS120 upon request, however th
 This repository downloads the Marvell toolchain from Western Digital, who use the same u-boot release for their MyCloud EX series of NAS devices.
 
 It will then invoke Docker to build u-boot, the output will be in `U-boot.MS120/u-boot.bin`
+
+# Building
+
+Run `make` and let Docker take care of the rest. At the end of the build you should have `U-boot.MS120/u-boot.bin`.

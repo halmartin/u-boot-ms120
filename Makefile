@@ -6,9 +6,11 @@ target: all
 
 deps:
 	# fetch u-boot source
+	# mirrored: https://web.archive.org/web/20201202202817/https://dl.meraki.net/U-boot-MS120-20191119.tar.bz2
 	wget -c https://dl.meraki.net/U-boot-MS120-20191119.tar.bz2
 	if [ -f U-boot-MS120-20191119.tar.bz2 ] && [ ! -d U-boot.MS120 ]; then tar -jxf U-boot-MS120-20191119.tar.bz2; fi
 	# Meraki doesn't include the Marvell toolchain used to build u-boot, nice people at Cisco, so get it from WD
+	# mirrored: https://web.archive.org/web/20201202203311/https://downloads.wdc.com/gpl/WDMyCloud_EX2100_GPL_v2.31.204_20191206.tar.gz
 	wget -c https://downloads.wdc.com/gpl/WDMyCloud_EX2100_GPL_v2.31.204_20191206.tar.gz
 	if [ -f WDMyCloud_EX2100_GPL_v2.31.204_20191206.tar.gz ] && [ ! -f armv7-marvell-linux-gnueabi-softfp_i686_64K_Dev_20131002.tar.gz ]; then tar --strip-components=2 -zxf WDMyCloud_EX2100_GPL_v2.31.204_20191206.tar.gz WDMyCloud_EX2100_GPL_v2.31.204_20191206/toolchain/; fi
 

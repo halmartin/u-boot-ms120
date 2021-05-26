@@ -1,0 +1,33 @@
+MAKING A KELPIE U-BOOT IMAGE FOR USE WITH AIKIDO
+
+When building an Aikido Kelpie U-Boot image, we actually store
+bin_hdr.bin and u-boot.bin separately.  To build:
+
+1. Get Marvell toolchain and add the bin directory to your path.
+
+2. Run the following command:
+
+CROSS_COMPILE=arm-marvell-linux-gnueabi- \
+CROSS_COMPILE_BH=arm-marvell-linux-gnueabi- \
+./build.pl -f nand -b ac3_customer0 -i spi:nand -a
+
+This will generate a number of files.  ONLY use the files specified in
+this document.
+
+3. The two stages of the bootloader are stored separately.  The first
+stage is called bin_hdr by Marvell, and ddrInit by the Aikido team.
+You can find the necessary binary here:
+
+tools/marvell/bin_hdr/bin_hdr.bin
+
+The second stage is U-Boot itself.  It's in the root as u-boot.bin.
+
+MAKING A RELEASE U-BOOT IMAGE
+
+Add "-r" to the build command above.  So to build a release bootloader
+for Aikido, use the following command:
+
+CROSS_COMPILE=arm-marvell-linux-gnueabi- \
+CROSS_COMPILE_BH=arm-marvell-linux-gnueabi- \
+./build.pl -f nand -b ac3_customer0 -i spi:nand -a -r
+
